@@ -8,11 +8,14 @@ public class Player : MonoBehaviour
     public int velocidade = 10;
     public int jump = 7;
     private Rigidbody rb;
+    private AudioSource source;   
+    public AudioClip ClipJump;
 
     public bool noChao;
 
     void Start() {
         TryGetComponent(out rb);
+        TryGetComponent(out source);
 }
     void OnCollisionEnter(Collision col) {
         if (col.gameObject.tag=="Floor") {
@@ -26,6 +29,7 @@ public class Player : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space) && noChao){ 
 
+            source.PlayOneShot(ClipJump);
             rb.AddForce(Vector3.up*jump,ForceMode.Impulse);
             noChao = false;
         }
