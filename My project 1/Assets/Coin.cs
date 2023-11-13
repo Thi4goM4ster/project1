@@ -19,7 +19,7 @@ public class Coin : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-           // FindObjectOfType<GameManager>().SubtrairMoedas(1);
+            FindObjectOfType<GameManager>().SubtractCoins(1);
             Destroy(gameObject);
         }
     }
